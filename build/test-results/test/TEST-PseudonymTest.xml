@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="PseudonymTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-14T16:11:57" hostname="MyMacBook.local" time="0.182">
+  <properties/>
+  <testcase name="test()" classname="PseudonymTest" time="0.182"/>
+  <system-out><![CDATA[ZCFDAH9VWttzxFU/FLqJdsO6hlS47BVFOeEz+qJrSsHo3c1BvY+c1fnmQE4aSzpmKtpGhr/z3sVdjxQTXYX7lg6k6q6iSG6nfiaMfhNM5i4WnWIbwKLwCOhPWT/Knczqz15xxRIzKkXfXw1CVveh/FIRWYIO33dbwMw3Vwme5pM=
+Npn/xQa9kloFw8FDfPjXFeklLUm54qFStAihO6bGEK9IGmlECPzqZQrFh8ZMXIhGIghBKVWa1N/gw1QoUZGaxUx1cNsoWWn9D9jOawvXC1V6rU2VjqKXm9qm7tY2Rt8sZQtD/mV/xfNLiGZi166UPaHo7MUZK2+lM5AvNg+JXJw=
+Npn/xQa9kloFw8FDfPjXFeklLUm54qFStAihO6bGEK9IGmlECPzqZQrFh8ZMXIhGIghBKVWa1N/gw1QoUZGaxUx1cNsoWWn9D9jOawvXC1V6rU2VjqKXm9qm7tY2Rt8sZQtD/mV/xfNLiGZi166UPaHo7MUZK2+lM5AvNg+JXJw=
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
