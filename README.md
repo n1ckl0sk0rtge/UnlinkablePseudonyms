@@ -14,9 +14,9 @@ KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
 keyPairGen.initialize(1024);
 KeyPair prfPair = keyPairGen.generateKeyPair();
 
-PRFSecretExponent xa = new PRFSecretExponent(new PRFSecureRandom(), 256);
+PRFSecretExponent xa = new PRFSecretExponent(256, (RSAPrivateCrtKey) prfPair.getPrivate());
 byte[] pseuA = Pseudonym.generate(input.getBytes(), xa, (RSAPublicKey) prfPair.getPublic());
-PRFSecretExponent xb = new PRFSecretExponent(new PRFSecureRandom(), 256);
+PRFSecretExponent xb = new PRFSecretExponent(256, (RSAPrivateCrtKey) prfPair.getPrivate());
 byte[] pseuB = Pseudonym.generate(input.getBytes(), xb, (RSAPublicKey) prfPair.getPublic());
 
 // Server A
