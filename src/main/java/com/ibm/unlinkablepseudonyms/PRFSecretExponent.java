@@ -11,11 +11,11 @@ public class PRFSecretExponent {
 
     public PRFSecretExponent(int bits, RSAPrivateCrtKey privateKey) {
         BigInteger phi = privateKey.getPrimeP().subtract(BigInteger.ONE).multiply(privateKey.getPrimeQ().subtract(BigInteger.ONE));
-        BigInteger e = new BigInteger(bits, new SecureRandom());
-        while (!(e.gcd(phi).equals(BigInteger.ONE))) {
-            e = new BigInteger(bits, new SecureRandom());
+        BigInteger x = new BigInteger(bits, new SecureRandom());
+        while ( !(x.gcd(phi).equals(BigInteger.ONE)) && (x.compareTo(BigInteger.ONE) > 0) ) {
+            x = new BigInteger(bits, new SecureRandom());
         }
-        this.data = e.toByteArray();
+        this.data = x.toByteArray();
     }
 
     public PRFSecretExponent(String base64) {
