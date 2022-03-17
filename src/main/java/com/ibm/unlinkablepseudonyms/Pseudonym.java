@@ -8,10 +8,10 @@ import java.security.interfaces.RSAPublicKey;
 
 public class Pseudonym {
 
-    public static byte[] generate(byte[] identifier, PRFSecretExponent secretExponent, RSAPublicKey converterKey) {
-        byte[] b_uid = DigestUtils.sha256(identifier);
-        BigInteger uid = new BigInteger(b_uid);
-        BigInteger nym = uid.modPow(secretExponent.asBigInt(), converterKey.getModulus());
+    public static byte[] generate(byte[] payload, PRFSecretExponent secretExponent, RSAPublicKey publicKey) {
+        byte[] z = DigestUtils.sha256(payload);
+        BigInteger b_z = new BigInteger(z);
+        BigInteger nym = b_z.modPow(secretExponent.asBigInt(), publicKey.getModulus());
         return nym.toByteArray();
     }
 
@@ -21,8 +21,8 @@ public class Pseudonym {
             PRFSecretExponent targetSecretExponent,
             RSAPrivateCrtKey privateKey) {
 
-        BigInteger value = (new BigInteger(cipher)).modPow(targetSecretExponent.asBigInt(), privateKey.getModulus());
         BigInteger phi = privateKey.getPrimeP().subtract(BigInteger.ONE).multiply(privateKey.getPrimeQ().subtract(BigInteger.ONE));
+        BigInteger value = (new BigInteger(cipher)).modPow(targetSecretExponent.asBigInt(), privateKey.getModulus());
         return value.modPow(currentSecretExponent.asBigInt().modInverse(phi), privateKey.getModulus()).toByteArray();
     }
 
