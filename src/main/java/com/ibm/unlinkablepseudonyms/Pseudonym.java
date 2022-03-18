@@ -1,7 +1,6 @@
 package com.ibm.unlinkablepseudonyms;
 
 import org.apache.commons.codec.digest.DigestUtils;
-
 import java.math.BigInteger;
 import java.security.interfaces.RSAPrivateCrtKey;
 import java.security.interfaces.RSAPublicKey;
@@ -23,7 +22,11 @@ public class Pseudonym {
             byte[] cipher,
             PRFSecretExponent currentSecretExponent,
             PRFSecretExponent targetSecretExponent,
-            RSAPrivateCrtKey privateKey) {
+            RSAPrivateCrtKey privateKey) throws Exception {
+
+        if (privateKey.getModulus().bitLength() <= 256) {
+            throw new Exception("key size to small");
+        }
 
         BigInteger phi = privateKey.getPrimeP().subtract(BigInteger.ONE).multiply(privateKey.getPrimeQ().subtract(BigInteger.ONE));
         BigInteger value = (new BigInteger(cipher)).modPow(targetSecretExponent.asBigInt(), privateKey.getModulus());
