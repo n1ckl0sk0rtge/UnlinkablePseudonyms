@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class PseudonymTest {
 
     @Test
-    public void test() {
+    public void positiveTest() {
 
         try {
             Base64.Encoder b64Enc = Base64.getEncoder();
@@ -49,4 +49,28 @@ public class PseudonymTest {
         }
 
     }
+
+    @Test
+    public void negativeTest() {
+
+        try {
+            Base64.Encoder b64Enc = Base64.getEncoder();
+
+            String input = "testIdentifier";
+
+            // Converter
+            KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
+            keyPairGen.initialize(256);
+            KeyPair prfPair = keyPairGen.generateKeyPair();
+
+            PRFSecretExponent xa = new PRFSecretExponent(256, (RSAPrivateCrtKey) prfPair.getPrivate());
+            byte[] pseuA = Pseudonym.generate(input.getBytes(), xa, (RSAPublicKey) prfPair.getPublic());
+
+            fail();
+
+        } catch (Exception e) { }
+
+    }
+
+
 }
