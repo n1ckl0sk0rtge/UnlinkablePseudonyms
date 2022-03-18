@@ -9,7 +9,7 @@ import java.security.interfaces.RSAPublicKey;
 public class Pseudonym {
 
     public static byte[] generate(byte[] payload, PRFSecretExponent secretExponent, RSAPublicKey publicKey) {
-        byte[] z = DigestUtils.sha256(payload);
+        byte[] z = DigestUtils.sha3_256(payload);
         BigInteger b_z = new BigInteger(z);
         BigInteger nym = b_z.modPow(secretExponent.asBigInt(), publicKey.getModulus());
         return nym.toByteArray();
