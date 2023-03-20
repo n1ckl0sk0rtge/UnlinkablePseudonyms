@@ -1,4 +1,4 @@
-# (Un)linkanle Pseudonyms
+# (Un)linkable Pseudonyms
 
 This library contains the functionality of unlinkable pseudonyms based on RSA.
 
